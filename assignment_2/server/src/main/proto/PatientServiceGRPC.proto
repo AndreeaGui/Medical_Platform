@@ -1,0 +1,26 @@
+
+
+//syntax, package, option
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.example.springdemo.grpc";
+
+service patientGRPC{
+    rpc login(LoginRequest) returns (APIResponse);
+    rpc logout(Empty) returns (APIResponse);
+}
+
+
+message LoginRequest{
+    string username = 1;
+    string password = 2;
+}
+
+message APIResponse{
+    string responseMessage = 1;
+    int32 responseCode = 2;
+}
+
+message Empty{
+
+}

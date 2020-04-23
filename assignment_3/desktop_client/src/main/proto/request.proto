@@ -1,0 +1,30 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.assignment3.client.grpc";
+
+service Request {
+    rpc sendMedications (PatientMessage) returns (MedicationPlan);
+    rpc takeMedication (Medication) returns (EmptyMessage);
+    rpc delayMedication (Medication) returns (EmptyMessage);
+}
+
+message EmptyMessage {
+
+}
+
+message MedicationPlan {
+     repeated Medication medications = 1;
+     string patient = 2;
+     string medicationPlanId = 3;
+}
+
+message Medication{
+    string name = 1;
+    string dosage = 2;
+    string interval = 3;
+    string id = 4;
+}
+
+message PatientMessage{
+    string id = 1;
+}
